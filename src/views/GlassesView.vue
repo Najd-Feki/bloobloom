@@ -88,15 +88,9 @@ onMounted(async () => {
       :popSelectedFilter="popSelectedFilter"
     ></ShapeFilter>
   </div>
-  <!-- <div v-if="selectedFilters"> -->
   <Filter :clearFilter="clearFilter" :filters="selectedFilters"></Filter>
-  <!-- </div> -->
   <div v-if="data" class="glasses-row">
-    <div
-      v-for="item in data.glasses"
-      :key="item.id"
-      class="glasses-image-container border border-1 border-dark"
-    >
+    <div v-for="item in data.glasses" :key="item.id" class="glasses-image-container">
       <img class="glasses-image" :src="item.glass_variants[0].media[0].url" />
     </div>
   </div>
@@ -141,5 +135,24 @@ onMounted(async () => {
 .glasses-row {
   display: flex;
   flex-wrap: wrap;
+}
+@media only screen and (max-width: 1200px) {
+  .glasses-image-container {
+    flex: 0 0 49.5%;
+  }
+}
+@media only screen and (max-width: 412px) {
+  .glasses-image-container {
+    flex: 0 0 99%;
+  }
+}
+@media only screen and (max-width: 1025px) {
+  .glasses-header {
+    flex: 0 0 99%;
+  }
+  .filter-title {
+    flex: 0 0 49.7%;
+    border-right: 1px solid black;
+  }
 }
 </style>

@@ -82,8 +82,6 @@ export interface IProducts {
 }
 
 export const getGlasses = async (filter: { queryParams?: string; pageNumber?: number }) => {
-  console.log({ filter });
-
   const result = await axios.get<IProducts>(
     // eslint-disable-next-line max-len
     `https://api-staging.bloobloom.com/user/v1/sales_channels/website/collections/spectacles-women/glasses?&page[limit]=12&page[number]=${

@@ -47,4 +47,14 @@ const shapes = ['square', 'rectangle', 'round', 'cat-eye'];
   border: 1px solid black;
   margin: 0 6px;
 }
+@media only screen and (max-width: 1025px) {
+  .shape-title {
+    flex: 0 0 49.5%;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .shape-title {
+    flex: 0 0 49.2%;
+  }
+}
 </style>
