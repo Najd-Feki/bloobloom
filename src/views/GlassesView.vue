@@ -66,37 +66,42 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="glasses-row">
-    <div class="glasses-header"></div>
-    <div class="glasses-header glasses-title">hehe</div>
-    <div class="glasses-header glasses-row">
-      <div @click="showColours" class="filter-title">colour</div>
-      <div @click="showShapes" class="filter-title">shape</div>
+  <div class="container">
+    <div class="glasses-row">
+      <div class="glasses-header" />
+      <div class="glasses-header glasses-title">spectacles-women</div>
+      <div class="glasses-header glasses-row">
+        <div @click="showColours" class="filter-title">colour</div>
+        <div @click="showShapes" class="filter-title">shape</div>
+      </div>
     </div>
-  </div>
-  <div v-if="colourSwitcher">
-    <ColourFilter
-      :selectedColors="selectedFilters.colours"
-      :setSelectedFilter="setSelectedFilter"
-      :popSelectedFilter="popSelectedFilter"
-    ></ColourFilter>
-  </div>
-  <div v-if="shapeSwitcher">
-    <ShapeFilter
-      :selectedShapes="selectedFilters.shapes"
-      :setSelectedFilter="setSelectedFilter"
-      :popSelectedFilter="popSelectedFilter"
-    ></ShapeFilter>
-  </div>
-  <Filter :clearFilter="clearFilter" :filters="selectedFilters"></Filter>
-  <div v-if="data" class="glasses-row">
-    <div v-for="item in data.glasses" :key="item.id" class="glasses-image-container">
-      <img class="glasses-image" :src="item.glass_variants[0].media[0].url" />
+    <div v-if="colourSwitcher">
+      <ColourFilter
+        :selectedColors="selectedFilters.colours"
+        :setSelectedFilter="setSelectedFilter"
+        :popSelectedFilter="popSelectedFilter"
+      ></ColourFilter>
+    </div>
+    <div v-if="shapeSwitcher">
+      <ShapeFilter
+        :selectedShapes="selectedFilters.shapes"
+        :setSelectedFilter="setSelectedFilter"
+        :popSelectedFilter="popSelectedFilter"
+      ></ShapeFilter>
+    </div>
+    <Filter :clearFilter="clearFilter" :filters="selectedFilters"></Filter>
+    <div v-if="data" class="glasses-row">
+      <div v-for="item in data.glasses" :key="item.id" class="glasses-image-container">
+        <img class="glasses-image" :src="item.glass_variants[0].media[0].url" />
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+.container {
+  margin-top: 4rem;
+}
 .glasses-header {
   flex: 0 0 33%;
   border: 1px solid black;
@@ -119,6 +124,8 @@ onMounted(async () => {
   text-align: center;
   margin: 0;
   text-transform: uppercase;
+  font-family: 'caslon-graphique';
+  font-weight: bold;
 }
 .glasses-image {
   max-width: 100%;
@@ -135,6 +142,7 @@ onMounted(async () => {
 .glasses-row {
   display: flex;
   flex-wrap: wrap;
+  transition: max-height 0.2s ease-out;
 }
 @media only screen and (max-width: 1200px) {
   .glasses-image-container {

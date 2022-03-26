@@ -3,15 +3,13 @@ import GlassesView from '@/views/GlassesView.vue';
 import { getGlasses } from './services/glasses';
 import { onMounted, ref } from 'vue';
 import type { IProducts } from './types/products';
+import NavBar from './components/NavBar.vue';
 const data = ref<IProducts>({} as IProducts);
-
-onMounted(async () => {
-  data.value = await getGlasses();
-});
 </script>
 
 <template>
   <div>
+    <NavBar />
     <GlassesView />
     <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
@@ -31,5 +29,5 @@ onMounted(async () => {
 </template>
 
 <style>
-/* @import '@/assets/base.css'; */
+@import '@/assets/base.css';
 </style>
