@@ -1,0 +1,39 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["src"],
+  "exclude": ["node_modules", "build"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "target": "ES2017",
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": false,
+    "rootDir": "src",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "build/dist",
+    "module": "esnext",
+    "lib": ["es6", "dom"],
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "useUnknownInCatchVariables": false
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.vite-config.json"
+    }
+  ]
+}
