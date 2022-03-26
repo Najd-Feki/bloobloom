@@ -86,4 +86,14 @@ const isColorAlreadySelected = (filter: FilterType) =>
   position: relative;
   top: 2px;
 }
+@media only screen and (max-width: 1025px) {
+  .colour-title {
+    flex: 0 0 49.5%;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .colour-title {
+    flex: 0 0 49.2%;
+  }
+}
 </style>
