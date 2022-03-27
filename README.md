@@ -1,46 +1,21 @@
-# BlooBloom
+# BlooBloom-Technical-Assessment
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a brief documentation of the project:
 
-## Recommended IDE Setup
+I used vue3 with vite and the script setup features along with typescript.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+You can find the typescript configuration I used in the tsconfig file and the eslint rules that keep the code clean and concise in the eslintrc file
 
-## Type Support for `.vue` Imports in TS
+I didn't use any external libraries so I can limit the bundle size.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+This project is fully responsive and mobile friendly, down to 375px of screen width (IPhone SE)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Files structure
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+I used a single view with many detached components such as filters and sidebar and menu to keep the code easy to read.
+There is the services folder for api requests,
+Helpers for functions with multiple usage,
+Globals for states used in more than a component (I didnt want to use a state managment library to keep the project light with limited size),
+and types to declare recieved api data types.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+I hope everything is clear and if there is any question don't hesitate to send me an email fekinajd@gmail.com
