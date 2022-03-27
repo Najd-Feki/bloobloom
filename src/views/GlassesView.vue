@@ -83,8 +83,10 @@ onMounted(async () => {
         <div @click="showShapes" class="filter-title">shape</div>
       </div>
     </div>
+
     <div v-if="colourSwitcher">
       <ColourFilter
+        :colourSwitcher="colourSwitcher"
         :selectedColors="selectedFilters.colours"
         :setSelectedFilter="setSelectedFilter"
         :popSelectedFilter="popSelectedFilter"
@@ -98,20 +100,31 @@ onMounted(async () => {
       ></ShapeFilter>
     </div>
     <Filter :clearFilter="clearFilter" :filters="selectedFilters"></Filter>
-    <div v-if="data" class="glasses-row">
+    <div v-if="data.glasses" class="glasses-row">
       <div v-for="item in data.glasses" :key="item.id" class="glasses-image-container">
         <img class="glasses-image" :src="item.glass_variants[0].media[0].url" />
       </div>
     </div>
+    <div v-else>
+      <img class="loader" src="@/assets/eyewear.gif" />
+    </div>
   </div>
 </template>
 <style>
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 .container {
   margin-top: 4rem;
 }
 .glasses-header {
   flex: 0 0 33%;
   border: 1px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
   height: 3rem;
 }
 .filter-title {
@@ -149,7 +162,6 @@ onMounted(async () => {
 .glasses-row {
   display: flex;
   flex-wrap: wrap;
-  transition: max-height 0.2s ease-out;
 }
 @media only screen and (max-width: 1200px) {
   .glasses-image-container {

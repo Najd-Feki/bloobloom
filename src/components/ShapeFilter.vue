@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FilterType } from '@/types/filter';
-
+import { shapes } from '@/constants/filterData';
 const props = defineProps<{
   setSelectedFilter: (filter: FilterType) => void;
   popSelectedFilter: (filter: FilterType) => void;
@@ -13,7 +13,6 @@ const handleSelectShape = (filter: FilterType) => {
 };
 const isShapeAlreadySelected = (filter: FilterType) =>
   props.selectedShapes.some((el) => el === filter.shape);
-const shapes = ['square', 'rectangle', 'round', 'cat-eye'];
 </script>
 
 <template>
