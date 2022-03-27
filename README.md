@@ -12,7 +12,7 @@ This project is fully responsive and mobile friendly, down to 375px of screen wi
 
 ## Files structure
 
-I used a single view with many detached components such as filters and sidebar and menu to keep the code easy to read.
+I used a single view with many detached components such as filters, sidebar and menu to keep the code easy to read.
 There is the services folder for api requests,
 Helpers for functions with multiple usage,
 Globals for states used in more than a component (I didnt want to use a state managment library to keep the project light with limited size),
