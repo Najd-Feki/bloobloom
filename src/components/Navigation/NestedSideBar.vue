@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { productType } from '../ProductTypeState';
+import { productType } from '../../global/ProductTypeState';
 const setProductType = (type: string) => (productType.value = type);
 const props = defineProps<{
   isNestedSideBarVisible: boolean;
