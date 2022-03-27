@@ -1,4 +1,4 @@
-# BlooBloom-Technical-Assessment
+# Project Documentation
 
 This is a brief documentation of the project:
 
