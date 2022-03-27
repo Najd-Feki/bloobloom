@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import { productType } from '../ProductTypeState';
+import { productType } from '../../global/ProductTypeState';
 export const navigationHook = () => {
   const setProductType = (type: string) => (productType.value = type);
   const isSideBarVisible = ref<boolean>(false);

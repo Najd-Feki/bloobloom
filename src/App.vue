@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import GlassesView from '@/views/GlassesView.vue';
+import GlassesView from '@/views/GlassesView/GlassesView.vue';
 import NavBar from './components/Navigation/NavBar.vue';
 </script>
 
 <template>
-  <div>
-    <NavBar />
-    <GlassesView />
-  </div>
+  <NavBar />
+  <GlassesView />
 </template>
 
-<style></style>
+<style>
+@import '@/assets/base.css';
+</style>

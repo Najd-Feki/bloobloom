@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { productType } from '../ProductTypeState';
+import { productType } from '../../global/ProductTypeState';
 import { ref } from 'vue';
 import ArrowIcon from '../icons/ArrowIcon.vue';
 const props = defineProps<{
