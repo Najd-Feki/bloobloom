@@ -2,8 +2,8 @@
 /* eslint-disable max-lines */
 import { ref } from 'vue';
 import ArrowIcon from './icons/ArrowIcon.vue';
-
-//const props = defineProps<{}>();
+import { productType } from './ProductTypeState';
+const setProductType = (type: string) => (productType.value = type);
 const isSideBarVisible = ref<boolean>(false);
 const showSideBar = () => (isSideBarVisible.value = true);
 const hideSideBar = () => (isSideBarVisible.value = false);
@@ -14,6 +14,7 @@ const showSecondSideBar = () => {
 };
 const hideSecondSideBar = () => {
   isSecondSideBarVisible.value = false;
+  isSideBarVisible.value = false;
 };
 const isThirdSideBarVisible = ref<boolean>(false);
 const showThirdSideBar = () => {
@@ -22,71 +23,82 @@ const showThirdSideBar = () => {
 };
 const hideThirdSideBar = () => {
   isThirdSideBarVisible.value = false;
+  //isSideBarVisible.value = false;
 };
 </script>
 
 <template>
   <div class="navbar">
-    <div class="nav-item" @mouseenter="showSideBar">MENU</div>
+    <div class="nav-item" @mouseenter="showSideBar" @mouseleave="hideSideBar">MENU</div>
     <div></div>
     <img alt="Vue logo" class="logo" src="@/assets/logo.png" />
   </div>
-  <Transition appear>
+
+  <div
+    v-if="isSideBarVisible"
+    @mouseenter="showSideBar"
+    @mouseleave="hideSideBar"
+    class="sidebar"
+  >
     <div
-      v-if="isSideBarVisible"
-      @mouseover="showSideBar"
-      @mouseleave="hideSideBar"
-      class="sidebar"
-    >
-      <div
-        :class="isSecondSideBarVisible ? 'side-item-dark' : 'side-item-light'"
-        @mouseenter="showSecondSideBar"
-        @mouseleave="hideSecondSideBar"
-      >
-        <Transition
-          ><span v-if="isSideBarVisible" class="side-text">spectacles</span></Transition
-        >
-        <div class="arrow-icon"><ArrowIcon /></div>
-      </div>
-      <div
-        :class="isThirdSideBarVisible ? 'side-item-dark' : 'side-item-light'"
-        @mouseenter="showThirdSideBar"
-        @mouseleave="hideThirdSideBar"
-      >
-        <span class="side-text">sunglassess</span>
-        <div class="arrow-icon"><ArrowIcon /></div>
-      </div></div
-  ></Transition>
-  <Transition>
-    <div
-      v-if="isSecondSideBarVisible"
+      :class="isSecondSideBarVisible ? 'side-item-dark' : 'side-item-light'"
       @mouseenter="showSecondSideBar"
       @mouseleave="hideSecondSideBar"
-      class="second-sidebar"
     >
-      <div class="side-item">
-        <span class="second-side-text">women</span>
-      </div>
-      <div class="side-item">
-        <span class="second-side-text">men</span>
-      </div>
-    </div></Transition
-  >
-  <Transition>
+      <span class="side-text">spectacles</span>
+      <div class="arrow-icon"><ArrowIcon /></div>
+    </div>
     <div
-      v-if="isThirdSideBarVisible"
+      :class="isThirdSideBarVisible ? 'side-item-dark' : 'side-item-light'"
       @mouseenter="showThirdSideBar"
       @mouseleave="hideThirdSideBar"
-      class="second-sidebar"
     >
-      <div class="side-item">
-        <span class="second-side-text">women</span>
-      </div>
-      <div class="side-item">
-        <span class="second-side-text">men</span>
-      </div>
-    </div></Transition
+      <span class="side-text">sunglasses</span>
+      <div class="arrow-icon"><ArrowIcon /></div>
+    </div>
+    <div class="side-item-light">
+      <span class="side-text-no-icon">home&nbsp;try&nbsp;on</span>
+    </div>
+    <div class="side-item-light">
+      <span class="side-text-no-icon">pair&nbsp;for&nbsp;pair</span>
+    </div>
+  </div>
+  <div
+    v-if="isSecondSideBarVisible"
+    @mouseenter="showSecondSideBar"
+    @mouseleave="hideSecondSideBar"
+    class="second-sidebar"
   >
+    <div class="side-item">
+      <span class="second-side-text" @click="setProductType('spectacles-women')">women</span>
+    </div>
+    <div class="side-item">
+      <span class="second-side-text" @click="setProductType('spectacles-men')">men</span>
+    </div>
+  </div>
+  <div
+    v-if="isThirdSideBarVisible"
+    @mouseenter="showThirdSideBar"
+    @mouseleave="hideThirdSideBar"
+    class="second-sidebar"
+  >
+    <div class="side-item">
+      <span
+        class="second-side-text"
+        @mouseenter="showSideBar"
+        @click="setProductType('sunglasses-women')"
+        >women</span
+      >
+    </div>
+    <div class="side-item">
+      <span
+        class="second-side-text"
+        @mouseenter="showSideBar"
+        @click="setProductType('sunglasses-men')"
+        >men</span
+      >
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -123,12 +135,16 @@ const hideThirdSideBar = () => {
 }
 .nav-item {
   line-height: 3.5rem;
+  text-decoration: underline;
   position: absolute;
+  left: 2rem;
   height: 4rem;
   width: 5rem;
   cursor: pointer;
+  font-weight: 900;
   padding-left: 15px;
   font-size: 13px;
+  font-family: 'caslon-graphique';
 }
 .logo {
   display: block;
@@ -138,6 +154,9 @@ const hideThirdSideBar = () => {
 }
 .side-text {
   margin: 0 1rem;
+}
+.side-text-no-icon {
+  margin-right: 3rem;
 }
 .second-side-text {
   margin-left: 1rem;
@@ -181,7 +200,7 @@ const hideThirdSideBar = () => {
 }
 .v-enter-active,
 .v-leave-active {
-  transition: width 0.2s ease;
+  transition: width 0.3s ease;
 }
 
 .v-enter-from,

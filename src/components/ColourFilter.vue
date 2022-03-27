@@ -55,7 +55,9 @@ const isColorAlreadySelected = (filter: FilterType) =>
       >
         <img :src="colour.uri" class="colour-image" />{{ colour.name }}
       </div>
-      <div v-else><img :src="colour.uri" class="colour-image" />{{ colour.name }}</div>
+      <div v-else class="inside-colour-title">
+        <img :src="colour.uri" class="colour-image" />{{ colour.name }}
+      </div>
     </div>
   </div>
 </template>
@@ -74,6 +76,14 @@ const isColorAlreadySelected = (filter: FilterType) =>
 .selected-colour-title {
   border: 1px solid black;
   margin: 0 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inside-colour-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .colour-image {
   background-position: center center;
@@ -83,8 +93,8 @@ const isColorAlreadySelected = (filter: FilterType) =>
   display: inline-block;
   border-radius: 100%;
   margin-right: 5px;
-  position: relative;
   top: 2px;
+  margin-bottom: 1px;
 }
 @media only screen and (max-width: 1025px) {
   .colour-title {
