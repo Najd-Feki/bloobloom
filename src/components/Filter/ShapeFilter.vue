@@ -41,6 +41,7 @@ const isShapeAlreadySelected = (filter: FilterType) =>
   text-transform: uppercase;
   cursor: pointer;
   padding: 5px 0;
+  font-weight: 600;
 }
 .selected-shape-title {
   border: 1px solid black;

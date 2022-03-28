@@ -48,6 +48,7 @@ const isColorAlreadySelected = (filter: FilterType) =>
   text-transform: uppercase;
   cursor: pointer;
   padding: 5px 0;
+  font-weight: 600;
 }
 .selected-colour-title {
   border: 1px solid black;
