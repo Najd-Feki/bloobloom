@@ -42,6 +42,7 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
 .glasses-title {
   line-height: 45px;
   font-size: 25px;
@@ -82,7 +83,10 @@
     flex: 0 0 99%;
   }
   .filter-title {
-    flex: 0 0 49.723%;
+    flex: 0 0 49.86%;
     border-right: 1px solid black;
+  }
+  .filter-title:last-child {
+    border-right: 0;
   }
 }
