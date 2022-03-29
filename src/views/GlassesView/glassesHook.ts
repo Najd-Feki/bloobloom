@@ -50,6 +50,27 @@ export const glassesHook = () => {
     shapeSwitcher.value = !shapeSwitcher.value;
     colourSwitcher.value = false;
   };
+  window.onscroll = async () => {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.clientHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight,
+      document.documentElement.clientHeight,
+    );
+    const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === height;
+    if (bottomOfWindow) {
+      pageNumber.value++;
+      const queryParams = constructQuery(selectedFilters.value);
+      const newFetchedData = await getGlasses({
+        pageNumber: pageNumber.value,
+        queryParams,
+        productType: productType.value,
+      });
+      data.value.glasses.push(...newFetchedData.glasses);
+    }
+  };
 
   return {
     showShapes,

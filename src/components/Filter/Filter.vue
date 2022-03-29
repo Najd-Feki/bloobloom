@@ -23,7 +23,6 @@ const flattenedFilters = computed(() => [...props.filters.colours, ...props.filt
 
 <style scoped>
 .filter-name {
-  flex: 0 0 0;
   height: 3rem;
   line-height: 45px;
   text-align: center;

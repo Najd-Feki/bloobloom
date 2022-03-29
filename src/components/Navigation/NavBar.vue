@@ -70,6 +70,6 @@ const handleMinifiedSideBarToggle = () => {
   width: 40px;
   height: 40px;
   margin: auto;
-  padding-right:2rem;
+  padding-right: 1.3rem;
 }
 </style>

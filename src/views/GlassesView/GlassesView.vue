@@ -4,7 +4,6 @@ import { onMounted, watchEffect } from 'vue';
 import ColourFilter from '@/components/Filter/ColourFilter.vue';
 import ShapeFilter from '@/components/Filter/ShapeFilter.vue';
 import Filter from '@/components/Filter/Filter.vue';
-import { constructQuery } from '@/helpers/constructQuery';
 import { productType } from '@/global/ProductTypeState';
 import { glassesHook } from './glassesHook';
 const {
@@ -16,7 +15,6 @@ const {
   data,
   colourSwitcher,
   shapeSwitcher,
-  pageNumber,
   loading,
   selectedFilters,
 } = glassesHook();
@@ -27,21 +25,7 @@ watchEffect(async () => {
   });
   loading.value = false;
 });
-window.onscroll = async () => {
-  const bottomOfWindow =
-    document.documentElement.scrollTop + window.innerHeight ===
-    document.documentElement.offsetHeight;
-  if (bottomOfWindow) {
-    pageNumber.value++;
-    const queryParams = constructQuery(selectedFilters.value);
-    const newFetchedData = await getGlasses({
-      pageNumber: pageNumber.value,
-      queryParams,
-      productType: productType.value,
-    });
-    data.value.glasses.push(...newFetchedData.glasses);
-  }
-};
+
 onMounted(async () => {
   loading.value = true;
   data.value = await getGlasses({ productType: productType.value });
