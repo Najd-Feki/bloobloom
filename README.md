@@ -18,4 +18,10 @@ Helpers for functions with multiple usage,
 Globals for states used in more than a component (I didnt want to use a state managment library to keep the project light with limited size),
 and types to declare recieved api data types.
 
+## Deployed Version
+
+Please check the deployed version on Netlify: 
+
+https://ubiquitous-pithivier-a78973.netlify.app/
+
 I hope everything is clear and if there is any question don't hesitate to send me an email fekinajd@gmail.com
